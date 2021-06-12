@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Container } from 'react-bootstrap';
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import ProviderContext from './components/context/ProviderContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ProviderContext>
+    <Container fluid>
+      <Suspense fallback={<div>Loading...</div>}>
+        <App />
+      </Suspense>
+    </Container>
+  </ProviderContext>,
   document.getElementById('root')
 );
 
